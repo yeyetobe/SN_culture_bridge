@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    /* 添加这一行，确保导航栏字体一致 */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    background-color: #757575;
+    /* 鼠标悬停时变色 */
+    text-decoration: underline;
+}
+
+.red-theme {
+    background-color: #ab5b5b;
+    /* 浅赭红色背景 */
+    color: #5A2A2A;
+    /* 文字颜色 */
+    /*font-family: "STKaiti", "KaiTi", serif;*/
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.red-theme h1 {
+    color: #C9A76A;
+    /* 标题用淡金色 */
+    font-family: "FangSong", serif;
+}
+
+.dialect-theme {
+
+    background-color: #FBEED9;
+    /* 浅米黄色背景 */
+    color: #3d3c3c;
+    /* 文字颜色#496217 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.dialect-theme h1 {
+    color: #898282;
+    /* 标题用深绿色#6B8E23; */
+    font-family: "FangSong", serif;
+    /* 仿宋 */
+}
+
+.diet-theme {
+    background-color: #F7E6C4;
+    /* 柔和杏色背景 */
+    color: #d58a54;
+    /* 深咖色文字 */
+    /*font-family: "MaShanZheng", cursive;
+    行书 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.diet-theme h1 {
+    color: #bb7b4c;
+    /* 标题用淡奶白 */
+    font-family: "FangSong", serif;
+}
+
+.heritage-theme {
+    background-color: #3d4e65;
+    /* 温和灰蓝色背景 */
+    color: #ffffff;
+    /* 深蓝灰文字 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.heritage-theme h1 {
+    color: #D4AF37;
+    /* 标题用浅金色 */
+    font-family: "FangSong", serif;
+    /* 仿宋 */
+}
+
+.home-theme {
+    background-color: #416048;
+    /* 温和米色背景 */
+    color: #f8fffa;
+    /* 文字颜色 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.home-theme h1 {
+    color: #F5F5DC;
+    /* 标题用墨绿色 */
+    font-family: "Georgia", serif;
+    /* 经典大方 */
+}
+
+.about-theme {
+    background-color: #F5F5DC;
+    /* 温和米色背景 */
+    color: #5D4037;
+    /* 文字颜色 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.about-theme h1 {
+    color: #3E6B48;
+    /* 标题用墨绿色 */
+    font-family: "Georgia", serif;
+    /* 经典大方 */
+}
+
+.contact-theme {
+    background-color: #F5F5DC;
+    /* 温和米色背景 */
+    color: #5D4037;
+    /* 文字颜色 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.contact-theme h1 {
+    color: #3E6B48;
+    /* 标题用墨绿色 */
+    font-family: "Georgia", serif;
+    /* 经典大方 */
+}
+
+
+button {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    /* 鼠标变成手形 */
+}
+
+button:hover {
+    background-color: #cc7700;
+    /* 鼠标悬停变色 */
+}
