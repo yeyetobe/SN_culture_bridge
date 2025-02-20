@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页</title>
+    <link rel="stylesheet" href="styles.css"> <!-- 连接CSS样式 -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background-color: #416048;
+            /* 设置原始背景颜色 */
+            background-image: url('corner_index2.png');
+            /* 设置你的线条图为背景 */
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-size: contain;
+            /* 或者 use cover，调整线条图的显示方式 */
+        }
+    </style>
+</head>
+
+<body class="home-theme">
+    <nav>
+        <a href="index.html">首页</a> |
+        <a href="about.html">关于我们和角落生物</a> |
+        <a href="red.html">红色文化</a> |
+        <a href="dialect.html">方言文化</a> |
+        <a href="diet.html">饮食文化</a> |
+        <a href="heritage.html">非遗文化</a> |
+        <a href="contact.html">联系我们</a>
+    </nav>
+
+
+    <h1>欢迎来到文化小船的船舱</h1>
+    <p>这是我们的首页，你可以在这里航行到其他页面。</p>
+    <!-- 主页内容 -->
+    <div class="card-container">
+        <div class="card" onclick="window.location.href='heritage.html'">
+            <img src="card_heritage.png" alt="非遗文化">
+
+        </div>
+        <div class="card" onclick="window.location.href='diet.html'">
+            <img src="card_diet.png" alt="饮食文化">
+
+        </div>
+        <div class="card" onclick="window.location.href='dialect.html'">
+            <img src="card_dialect.png" alt="方言文化">
+
+        </div>
+        <div class="card" onclick="window.location.href='red.html'">
+            <img src="card_red.png" alt="红色文化">
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

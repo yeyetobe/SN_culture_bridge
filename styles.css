@@ -1,0 +1,274 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    /* 添加这一行，确保导航栏字体一致 */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    background-color: #757575;
+    /* 鼠标悬停时变色 */
+    text-decoration: underline;
+}
+
+.red-theme {
+    background-color: #ab5b5b;
+    /* 浅赭红色背景 */
+    color: #5A2A2A;
+    /* 文字颜色 */
+    /*font-family: "STKaiti", "KaiTi", serif;*/
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.red-theme h1 {
+    color: #C9A76A;
+    /* 标题用淡金色 */
+    font-family: "FangSong", serif;
+}
+
+.dialect-theme {
+
+    background-color: #FBEED9;
+    /* 浅米黄色背景 */
+    color: #3d3c3c;
+    /* 文字颜色#496217 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.dialect-theme h1 {
+    color: #898282;
+    /* 标题用深绿色#6B8E23; */
+    font-family: "FangSong", serif;
+    /* 仿宋 */
+}
+
+.diet-theme {
+    background-color: #F7E6C4;
+    /* 柔和杏色背景 */
+    color: #d58a54;
+    /* 深咖色文字 */
+    /*font-family: "MaShanZheng", cursive;
+    行书 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.diet-theme h1 {
+    color: #bb7b4c;
+    /* 标题用淡奶白 */
+    font-family: "FangSong", serif;
+}
+
+.heritage-theme {
+    background-color: #3d4e65;
+    /* 温和灰蓝色背景 */
+    color: #ffffff;
+    /* 深蓝灰文字 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.heritage-theme h1 {
+    color: #D4AF37;
+    /* 标题用浅金色 */
+    font-family: "FangSong", serif;
+    /* 仿宋 */
+}
+
+.home-theme {
+    background-color: #F5F5DC;
+    /* 温和米色背景 */
+    color: #75887b;
+    /* 文字颜色 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.home-theme h1 {
+    color: #5e6c62;
+    /* 标题用墨绿色 */
+    font-family: "Georgia", serif;
+    /* 经典大方 */
+}
+
+.about-theme {
+    background-color: #F5F5DC;
+    /* 温和米色背景 */
+    color: #5D4037;
+    /* 文字颜色 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.about-theme h1 {
+    color: #5e6c62;
+    /* 标题用墨绿色 */
+    font-family: "Georgia", serif;
+    /* 经典大方 */
+}
+
+.contact-theme {
+    background-color: #F5F5DC;
+    /* 温和米色背景 */
+    color: #5D4037;
+    /* 文字颜色 */
+    font-family: "Microsoft YaHei", sans-serif;
+    /* 现代易读 */
+}
+
+.contact-theme h1 {
+    color: #5e6c62;
+    /* 标题用墨绿色3E6B48 */
+    font-family: "Georgia", serif;
+    /* 经典大方 */
+}
+
+
+button {
+    background-color: #ff9900;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    /* 鼠标变成手形 */
+}
+
+button:hover {
+    background-color: #cc7700;
+    /* 鼠标悬停变色 */
+}
+
+/* Reset some default styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    background-color: #333;
+}
+
+header nav ul li {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Card container styles */
+.card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 50px 0;
+    /* overflow: hidden;*/
+    width: 100%;
+    height: auto;
+}
+
+.card {
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 267px;
+    /* margin: 0 15px;*/
+    margin-right: -70px;
+    /* 让卡片重叠 */
+    transition: transform 0.3s ease, z-index 0.3s ease;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    /* 添加阴影效果 */
+    border-radius: 10px;
+    /* 圆角效果 */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    /* 图片的圆角 */
+}
+
+.card:hover {
+    transform: scale(1.2);
+    /* 放大当前卡片 */
+    z-index: 10;
+    /* 当前卡片的层级提高，显示在上方 */
+}
+
+/*
+.card h3 {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    color: rgb(81, 137, 82);
+    background: rgba(255, 255, 255, 0.5);
+    padding: 5px 0;
+    font-size: 1.2em;
+}
+*/
+/* Overlapping effect - control the horizontal positioning */
+.card:nth-child(1) {
+    transform: translateX(0);
+}
+
+.card:nth-child(2) {
+    transform: translateX(-30%);
+}
+
+.card:nth-child(3) {
+    transform: translateX(-60%);
+}
+
+.card:nth-child(4) {
+    transform: translateX(-90%);
+}
+
+/* Hover effect - enlarge the card */
+.card-container .card:hover {
+    transform: scale(1.1);
+    z-index: 2;
+}
+
+/* Make the images more responsive */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column;
+    }
+
+    .card {
+        transform: translateX(0);
+        /* 在小屏幕上不重叠 */
+        margin-bottom: 20px;
+    }
+}
