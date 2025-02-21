@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>非遗文化</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3d4e65;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 20px;
+            color: #D4AF37;
+            font-family: "FangSong", serif;
+        }
+
+        p {
+            margin: 10px;
+        }
+
+        #heritageVideo {
+            display: block;
+            margin: 0 auto;
+            max-width: 80%;
+        }
+
+        #sequence {
+            margin-top: 30px;
+        }
+
+        .module {
+            display: inline-block;
+            width: 150px;
+            height: 100px;
+            background-color: #5a8f7b;
+            color: white;
+            line-height: 100px;
+            margin: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            word-wrap: break-word;
+            /* 允许文本换行 */
+            white-space: normal;
+            /* 允许文字分行 */
+
+        }
+
+        .dragging {
+            opacity: 0.5;
+        }
+
+        .drop-zone {
+            width: 150px;
+            height: 100px;
+            margin: 10px;
+            background-color: #3e6b5a;
+            display: inline-block;
+            vertical-align: top;
+            border-radius: 10px;
+        }
+
+        #checkAnswer {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #5a8f7b;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #checkAnswer:hover {
+            background-color: #3e6b5a;
+        }
+
+        #backToHome {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background-color: #416048;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>非遗文化</h1>
+    <p>这里是非遗文化游戏页面。请观看下面竹编扇的制作过程，拖拽小方块，给出正确的顺序</p>
+
+    <video id="heritageVideo" controls>
+        <source src="heritage.mp4" type="video/mp4">
+    </video>
+
+    <div id="sequence">
+        <h2>请将以下方块拖拽至正确顺序</h2>
+        <div id="shuffledModules">
+            <div id="module1" class="module" draggable="true" ondragstart="startDrag(event)" data-step="6">依纸张裁剪竹条</div>
+            <div id="module2" class="module" draggable="true" ondragstart="startDrag(event)" data-step="8">粘贴布条</div>
+            <div id="module3" class="module" draggable="true" ondragstart="startDrag(event)" data-step="1">挑选竹条</div>
+            <div id="module4" class="module" draggable="true" ondragstart="startDrag(event)" data-step="3">纵向贴竹条</div>
+            <div id="module5" class="module" draggable="true" ondragstart="startDrag(event)" data-step="9">插入扇柄</div>
+            <div id="module6" class="module" draggable="true" ondragstart="startDrag(event)" data-step="2">在桌上粘胶带</div>
+            <div id="module7" class="module" draggable="true" ondragstart="startDrag(event)" data-step="5">裁剪纸张</div>
+            <div id="module8" class="module" draggable="true" ondragstart="startDrag(event)" data-step="7">胶水抹边</div>
+            <div id="module9" class="module" draggable="true" ondragstart="startDrag(event)" data-step="4">横向“挑二压二”
+            </div>
+        </div>
+
+        <h2></h2>
+        <div id="dropZones">
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="1">1</div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="2">2</div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="3">3</div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="4">4</div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="5">5</div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="6">6</div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="7">7</div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="8">8</div>
+            <div class="drop-zone" ondrop="drop(event)" ondragover="allowDrop(event)" data-position="9">9</div>
+        </div>
+
+        <button id="checkAnswer" onclick="checkAnswer()">校对答案</button>
+    </div>
+
+    <!-- <button id="backToHome" onclick="goToHome()">返回主页</button> -->
+
+    <script>
+        let draggedModule = null;
+        let score = 0;  // 用于记录分数
+
+        function startDrag(event) {
+            draggedModule = event.target;
+            event.dataTransfer.setData("text", draggedModule.id);
+            draggedModule.classList.add('dragging');
+        }
+
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            const droppedOn = event.target;
+            if (droppedOn.classList.contains('drop-zone') && draggedModule !== null) {
+                droppedOn.appendChild(draggedModule);
+                draggedModule.classList.remove('dragging');
+                draggedModule = null;
+            }
+        }
+
+        function checkAnswer() {
+            const dropZones = document.querySelectorAll('.drop-zone');
+            let correct = true;
+
+            dropZones.forEach((zone, index) => {
+                const module = zone.querySelector('.module'); // 拖拽模块
+                const step = module ? module.getAttribute('data-step') : null;
+                const correctStep = zone.getAttribute('data-position');
+
+                if (step !== correctStep) {
+                    correct = false;
+                }
+            });
+
+            if (correct) {
+                score++;  // 加分
+                alert("恭喜你，顺序正确！当前得分：" + score);
+            } else {
+                alert("顺序错误，请再试一次。");
+            }
+
+            goToHome();  // 返回主页
+        }
+
+        function goToHome() {
+            window.location.href = 'challenge.html';  // 假设主页的文件名是index.html
+        }
+    </script>
+
+</body>
+
+</html>
