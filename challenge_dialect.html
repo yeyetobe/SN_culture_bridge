@@ -1,13 +1,242 @@
-<div class="audio-container">
-    <audio id="audio1" src="audio1.mp3" controls></audio>
-    <select id="dialect1">
-        <option value="1">西南官话</option>
-        <option value="2">东北话</option>
-        <option value="3">内蒙话</option>
-        <option value="4">湖州话</option>
-    </select>
-    <select id="meaning1">
-        <option value="1">意思A</option>
-        <option value="2">意思B</option>
-    </select>
-</div>
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>方言连线游戏</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #FBEED9;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        .audio-container {
+            margin: 20px 0;
+        }
+
+        .line-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-top: 20px;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .line-item {
+            padding: 10px 20px;
+            background-color: #ddd;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            user-select: none;
+            border: 3px solid transparent;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .line-item:hover {
+            background-color: #bbb;
+        }
+
+        .selected {
+            border-color: blue;
+        }
+
+        .correct {
+            border-color: green !important;
+            background-color: lightgreen;
+        }
+
+        .wrong {
+            border-color: red !important;
+            background-color: lightcoral;
+        }
+
+        .score-display {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #3d3c3c;
+            color: #FBEED9;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #bbb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>方言连线题</h2>
+    <p>点击左侧方言，再点击右侧意思进行连线。</p>
+    <div class="score-display">当前题号: <span id="questionNumber">1</span></div>
+    <div class="audio-container">
+        <audio id="audio" controls></audio>
+    </div>
+
+    <div class="line-container">
+        <div class="column" id="dialects"></div>
+        <div class="column" id="meanings"></div>
+    </div>
+
+    <div class="score-display">当前得分: <span id="score">0</span></div>
+
+    <div class="button-container">
+        <button onclick="goToHome()">返回主页</button>
+    </div>
+
+    <script>
+        let selectedDialect = null;
+        let selectedMeaning = null;
+        let score = 0;
+        let currentQuestion = 0;
+
+        // 题目数据
+        const questions = [
+            {
+                audio: "assets/audio1.m4a",
+                correctPair: { dialect: "吴语", meaning: "干嘛" },
+                pairs: [
+                    { dialect: "西南官话", meaning: "作业" },
+                    { dialect: "东北话", meaning: "做事" },
+                    { dialect: "吴语", meaning: "干嘛" }
+                ]
+            },
+            {
+                audio: "assets/audio2.m4a",
+                correctPair: { dialect: "东北话", meaning: "膝盖" },
+                pairs: [
+                    { dialect: "西南官话", meaning: "瓶盖" },
+                    { dialect: "东北话", meaning: "天灵盖" },
+                    { dialect: "吴话", meaning: "膝盖" }
+                ]
+            }
+        ];
+
+        function loadQuestion() {
+            if (currentQuestion >= questions.length) {
+                alert(`游戏结束！你的总得分是: ${score}`);
+                goToHome();
+                return;
+            }
+
+            const question = questions[currentQuestion];
+            document.getElementById("audio").src = question.audio;
+            document.getElementById("questionNumber").textContent = currentQuestion + 1;
+
+
+            const dialectsContainer = document.getElementById("dialects");
+            const meaningsContainer = document.getElementById("meanings");
+            dialectsContainer.innerHTML = "";
+            meaningsContainer.innerHTML = "";
+
+            question.pairs.forEach(pair => {
+                const dialectDiv = document.createElement("div");
+                dialectDiv.classList.add("line-item");
+                dialectDiv.dataset.dialect = pair.dialect;
+                dialectDiv.textContent = pair.dialect;
+                dialectDiv.onclick = () => handleItemClick(dialectDiv, "dialect");
+                dialectsContainer.appendChild(dialectDiv);
+
+                const meaningDiv = document.createElement("div");
+                meaningDiv.classList.add("line-item");
+                meaningDiv.dataset.meaning = pair.meaning;
+                meaningDiv.textContent = pair.meaning;
+                meaningDiv.onclick = () => handleItemClick(meaningDiv, "meaning");
+                meaningsContainer.appendChild(meaningDiv);
+            });
+
+            selectedDialect = null;
+            selectedMeaning = null;
+        }
+
+
+        function handleItemClick(item, type) {
+            if (type === "dialect") {
+                if (selectedDialect !== null) return;
+                selectedDialect = item;
+                item.classList.add("selected");
+            } else if (type === "meaning") {
+                if (selectedMeaning !== null || selectedDialect === null) return;
+                selectedMeaning = item;
+                checkAnswer();
+            }
+        }
+
+        function checkAnswer() {
+            const correctPair = questions[currentQuestion].correctPair;
+            const userDialect = selectedDialect.dataset.dialect;
+            const userMeaning = selectedMeaning.dataset.meaning;
+
+            // 先默认标错
+            if (userDialect === correctPair.dialect) {
+                selectedDialect.classList.add("correct"); // 左边正确，标绿
+            } else {
+                selectedDialect.classList.add("wrong"); // 左边错误，标红
+            }
+
+            if (userMeaning === correctPair.meaning) {
+                selectedMeaning.classList.add("correct"); // 右边正确，标绿
+            } else {
+                selectedMeaning.classList.add("wrong"); // 右边错误，标红
+            }
+
+            // 显示正确答案
+            if (userDialect !== correctPair.dialect || userMeaning !== correctPair.meaning) {
+                document.querySelectorAll('.line-item').forEach(item => {
+                    if (item.dataset.dialect === correctPair.dialect) {
+                        item.classList.add("correct");
+                    }
+                    if (item.dataset.meaning === correctPair.meaning) {
+                        item.classList.add("correct");
+                    }
+                });
+            } else {
+                score++;
+            }
+
+            document.getElementById("score").textContent = score;
+
+            setTimeout(() => {
+                currentQuestion++;
+                loadQuestion();
+            }, 2000);
+        }
+
+        function goToHome() {
+            window.location.href = 'challenge.html';
+        }
+
+        loadQuestion();
+    </script>
+
+</body>
+
+</html>
