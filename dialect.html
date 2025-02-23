@@ -6,9 +6,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>方言文化</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 页面整体样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            /* 让图片定位相对于页面 */
+        }
+
+        /* 在页面左上角固定位置显示透明PNG图标 */
+        .logo {
+            position: absolute;
+            top: 0px;
+            /* 距离页面顶部10px */
+            left: 10px;
+            /* 距离页面左边10px */
+            width: 250px;
+            /* 可以根据需要调整图标大小 */
+            height: auto;
+            /* 保持图片比例 */
+            z-index: 100;
+            /* 确保图标位于其他元素之上 */
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .dialect-card {
+            width: 45%;
+            height: 300px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dialect-card:hover {
+            transform: scale(1.05);
+            opacity: 0.9;
+        }
+
+        .dialect-card h2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        @media (max-width: 768px) {
+            .dialect-card {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body class="culture-page dialect-theme">
+    <!-- 添加透明PNG图片的logo -->
+    <img src="assets/dialect_logo.png" alt="Logo" class="logo">
+
     <nav>
         <a href="index.html">首页</a> |
         <a href="about.html">关于我们和角落生物</a> |
@@ -20,10 +109,41 @@
     </nav>
 
     <h1>方言文化</h1>
-    <p>这里是方言文化主题页面。</p>
-    <!-- 在 HTML 中创建一个按钮 -->
+    <p>在这里，我们将带你了解中国各地丰富的方言文化，感受各地方言的独特魅力。</p>
+
+    <div class="content">
+        <!-- 黑龙江方言 -->
+        <div class="dialect-card" style="background-image: url('assets/dialect_hlj.png');"
+            onclick="window.location.href='hlj_dialect.html'">
+            <h2>黑龙江方言</h2>
+        </div>
+
+        <!-- 内蒙古方言 -->
+        <div class="dialect-card" style="background-image: url('assets/dialect_nm.png');"
+            onclick="window.location.href='nm_dialect.html'">
+            <h2>内蒙古方言</h2>
+        </div>
+
+        <!-- 贵州方言 -->
+        <div class="dialect-card" style="background-image: url('assets/dialect_gz.png');"
+            onclick="window.location.href='gz_dialect.html'">
+            <h2>贵州方言</h2>
+        </div>
+
+        <!-- 浙江安吉方言 -->
+        <div class="dialect-card" style="background-image: url('assets/dialect_aj.png');"
+            onclick="window.location.href='aj_dialect.html'">
+            <h2>浙江安吉方言</h2>
+        </div>
+    </div>
+
     <button id="backToHome" onclick="goToHome()">返回主页</button>
-    <script src="scripts/main.js"></script>
+
+    <script>
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 
 </html>

@@ -5,25 +5,115 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>首页</title>
-    <link rel="stylesheet" href="styles.css"> <!-- 连接CSS样式 -->
+    <link rel="stylesheet" href="styles.css"> <!-- 连接外部CSS样式 -->
     <style>
         body {
             margin: 0;
             padding: 0;
             height: 100vh;
             background-color: #416048;
-            /* 设置原始背景颜色 */
             background-image: url('corner_index2.png');
-            /* 设置你的线条图为背景 */
             background-repeat: no-repeat;
             background-position: right top;
             background-size: contain;
-            /* 或者 use cover，调整线条图的显示方式 */
+        }
+
+        /* 队伍名字和描述的样式：加圆角卡片背景 */
+        .team-info {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            /* 垂直居中 */
+            color: white;
+            display: flex;
+            flex-direction: row;
+            background-color: rgba(0, 0, 0, 0.7);
+            /* 半透明黑色背景 */
+            border-radius: 15px;
+            /* 圆角效果 */
+            padding: 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            /* 添加阴影效果 */
+        }
+
+        .team-name {
+            font-size: 30px;
+            font-weight: bold;
+            writing-mode: vertical-rl;
+            /* 竖排文字 */
+            text-align: center;
+            margin-right: 20px;
+            /* 控制两列间的间距 */
+        }
+
+        .team-description {
+            font-size: 14px;
+            line-height: 1.6;
+            width: 250px;
+            /* 根据需要调整宽度 */
+            margin-top: 20px;
+            /* 控制第二列的下移距离 */
+        }
+
+        nav {
+            margin-top: 0;
+            /* 取消顶部空白 */
+            text-align: center;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .card {
+            margin: 10px;
+            cursor: pointer;
+            margin-left: 70px;
+        }
+
+
+        .challenge-button {
+            display: block;
+            /* 让按钮独占一行 */
+            visibility: visible;
+            /* 确保按钮可见 */
+            margin: 20px auto;
+            /* 居中 */
+            margin-top: 250px;
+            /* 使按钮向下移动50px */
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: rgb(255, 255, 255);
+            background-color: #2c5f2d;
+            /* 深绿色，与页面风格匹配 */
+            border: none;
+            border-radius: 10px;
+            /* 圆角 */
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .challenge-button:hover {
+            background-color: #1e4620;
+            /* 悬停时变深一点 */
         }
     </style>
 </head>
 
 <body class="home-theme">
+
+    <!-- 新增的内容：队伍名字和描述文字，带背景卡片效果 -->
+    <div class="team-info">
+        <div class="team-name">南北文化，智传天下</div>
+        <div class="team-description">
+            中华优秀传统文化是中华民族生生不息、繁荣昌盛的重要支撑，涵盖哲学、艺术、历史、语言等多个领域，凝聚了民族智慧与精神。在全球化、信息化加速的背景下，传承与发展面临挑战。习近平总书记强调，文化自信是更基本、更持久的力量，需推动中华文化走出去，提升国际影响力。<br><br>
+            北京语言大学秉承“语言报国、文化兴国”使命，以“语言架桥，铸就中华文明新辉煌”为主题的寒假社会实践活动，将发挥语言优势，通过多语种创新传播，助力中华文化的传承与发展。活动聚焦中华文化的共性与团队成员家乡文化的独特性，包括内蒙古草原文化、黑龙江边疆历史、贵州少数民族文化与浙江安吉竹茶文化。成员将在探索中增强文化自信与认同，为推广中华优秀传统文化贡献力量。
+        </div>
+    </div>
 
     <nav>
         <a href="index.html">首页</a> |
@@ -35,26 +125,21 @@
         <a href="contact.html">联系我们</a>
     </nav>
 
-
     <h1>欢迎来到文化小船的船舱</h1>
     <p>这是我们的首页，你可以在这里航行到其他页面。</p>
     <!-- 主页内容 -->
     <div class="card-container">
         <div class="card" onclick="window.location.href='heritage.html'">
             <img src="card_heritage.png" alt="非遗文化">
-
         </div>
         <div class="card" onclick="window.location.href='diet.html'">
             <img src="card_diet.png" alt="饮食文化">
-
         </div>
         <div class="card" onclick="window.location.href='dialect.html'">
             <img src="card_dialect.png" alt="方言文化">
-
         </div>
         <div class="card" onclick="window.location.href='red.html'">
             <img src="card_red.png" alt="红色文化">
-
         </div>
     </div>
     <button class="challenge-button" onclick="window.location.href='challenge.html'">闯关模式</button>

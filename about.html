@@ -10,22 +10,102 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
             background-color: #F5F5DC;
-            /* 原始背景色 */
+            /* 温和米色背景 */
+            color: #5D4037;
+            /* 文字颜色 */
+            font-family: "Microsoft YaHei", sans-serif;
+            /* 现代易读 */
             background-image: url('about_back.png');
-            /* 透明背景的线条图 */
             background-repeat: no-repeat;
             background-position: right bottom;
-            background-size: contain;
-            /* 让图像适应整个屏幕 */
+            background-size: 50%;
+        }
+
+        < !-- nav {
+            background: rgba(51, 51, 51, 0.8);
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        -->.container {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: #5e6c62;
+            /* 标题用墨绿色 */
+            font-family: "Georgia", serif;
+            /* 经典大方 */
+        }
+
+        .team-member {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            backdrop-filter: blur(2px);
+        }
+
+        .team-member img {
+            width: 160px;
+            height: 140px;
+            border-radius: 10px;
+            object-fit: contain;
+            margin-right: 20px;
+        }
+
+        .member-info {
+            flex: 1;
+            text-align: left;
+        }
+
+        .member-info img {
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .corner-card {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            width: 120px;
+            height: 120px;
+            background: rgba(255, 228, 196, 0.7);
+            border-radius: 10px;
+            text-align: center;
+            font-size: 14px;
+            padding: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .corner-card img {
+            width: 100px;
+            height: 80px;
+            border-radius: 8px;
+            object-fit: contain;
+            margin-bottom: 5px;
         }
     </style>
 </head>
 
-<!-- <button class="bt-about" onclick="window.location.href='red.html'">进入红色文化</button> -->
-
-<body class="about-theme">
+<body>
     <nav>
         <a href="index.html">首页</a> |
         <a href="about.html">关于我们和角落生物</a> |
@@ -35,12 +115,65 @@
         <a href="heritage.html">非遗文化</a> |
         <a href="contact.html">联系我们</a>
     </nav>
+    <div class="container">
+        <h1>关于我们</h1>
 
-    <h1>关于我们</h1>
-    <p>这里是关于我们团队的介绍。</p>
+        <div class="team-member">
+            <img src="assets/member1.jpg" alt="成员1照片">
+            <div class="member-info">
+                <h2>队长——叶张画</h2>
+                <p>来自 <strong>浙江安吉</strong>，是本次的队长兼网页负责人兼剪辑手，负责严肃又“温柔”地提醒任务</p>
+                <img src="https://api.map.baidu.com/staticimage/v2?ak=你的AK密钥&center=杭州&zoom=8&width=300&height=200&markers=杭州"
+                    alt="安吉地图">
+            </div>
+            <div class="corner-card">
+                <img src="assets/about_x.png" alt="兴趣图片">
+                <p>携带生物：炸虾</p>
+            </div>
+        </div>
 
-    <h1>关于角落生物</h1>
-    <p>这里是关于我们团队代表的角落生物的介绍。</p>
+        <div class="team-member">
+            <img src="assets/member2.jpg" alt="成员2照片">
+            <div class="member-info">
+                <h2>队员1——王笑阳</h2>
+                <p>来自 <strong>黑龙江伊春</strong>，热爱摄影和旅行。</p>
+                <img src="https://api.map.baidu.com/staticimage/v2?ak=你的AK密钥&center=哈尔滨&zoom=8&width=300&height=200&markers=哈尔滨"
+                    alt="伊春地图">
+            </div>
+            <div class="corner-card">
+                <img src="assets/about_f.png" alt="兴趣图片">
+                <p>携带生物：小f</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="assets/member3.jpg" alt="成员3照片">
+            <div class="member-info">
+                <h2>队员2——刘锐轩</h2>
+                <p>来自 <strong>贵州遵义</strong>，擅长传统乐器演奏。</p>
+                <img src="https://api.map.baidu.com/staticimage/v2?ak=你的AK密钥&center=贵阳&zoom=8&width=300&height=200&markers=贵阳"
+                    alt="遵义地图">
+            </div>
+            <div class="corner-card">
+                <img src="assets/about_j.png" alt="兴趣图片">
+                <p>携带生物：桨桨酱</p>
+            </div>
+        </div>
+
+        <div class="team-member">
+            <img src="assets/member4.jpg" alt="成员4照片">
+            <div class="member-info">
+                <h2>队员3——韩笑言</h2>
+                <p>来自 <strong>内蒙古赤峰</strong>，热爱绘画和手工艺。</p>
+                <img src="https://api.map.baidu.com/staticimage/v2?ak=你的AK密钥&center=安吉&zoom=8&width=300&height=200&markers=安吉"
+                    alt="赤峰地图">
+            </div>
+            <div class="corner-card">
+                <img src="assets/about_jj.png" alt="兴趣图片">
+                <p>携带生物：兼兼</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

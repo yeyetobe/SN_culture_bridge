@@ -6,12 +6,127 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>饮食文化</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 页面整体样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        /* 在页面左上角固定位置显示透明PNG图标 */
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            width: 250px;
+            height: auto;
+            z-index: 100;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* 创建卡片容器并居中 */
+        .card-container {
+            display: flex;
+            /* 使用flex布局 */
+            justify-content: center;
+            /* 水平居中卡片 */
+            gap: 30px;
+            /* 卡片之间的间隔 */
+            margin-top: 30px;
+            flex-wrap: wrap;
+            /* 允许在小屏幕上换行 */
+        }
+
+        /* 每张卡片的样式 */
+        .card {
+            width: 250px;
+            /* 每个卡片固定宽度 */
+            height: 300px;
+            /* 固定高度 */
+            background-color: #f7b258;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            /* 去除超链接的下划线 */
+        }
+
+        /* 卡片悬浮效果 */
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        /* 卡片内图片样式 */
+        .card img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+        }
+
+        /* 卡片标题样式 */
+        .card h3 {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        /* 响应式设计，适应小屏幕 */
+        @media (max-width: 768px) {
+            .card-container {
+                flex-direction: column;
+                /* 在小屏幕上，卡片竖着排列 */
+                gap: 20px;
+                /* 卡片间距调整 */
+            }
+
+            .card {
+                width: 100%;
+                /* 小屏幕时卡片宽度占满 */
+            }
+        }
+    </style>
 </head>
 
 <body class="culture-page diet-theme">
+    <!-- 添加透明PNG图片的logo -->
+    <img src="assets/diet_logo.png" alt="Logo" class="logo">
+
     <nav>
         <a href="index.html">首页</a> |
-        <a href="about.html">关于我们和角落生物</a> |
+        <a href="about.html">关于我们</a> |
         <a href="red.html">红色文化</a> |
         <a href="dialect.html">方言文化</a> |
         <a href="diet.html">饮食文化</a> |
@@ -20,10 +135,18 @@
     </nav>
 
     <h1>饮食文化</h1>
-    <p>这里是饮食文化主题页面。</p>
-    <!-- 在 HTML 中创建一个按钮 -->
-    <button id="backToHome" onclick="goToHome()">返回主页</button>
-    <script src="scripts/main.js"></script>
+    <p>在这里，我们将探索中国各地丰富的饮食文化，品味各地的美食和烹饪艺术。</p>
+
+    <div class="card-container">
+        <a href="diet_intro.html" class="card">
+            <img src="assets/diet_intro_image.jpg" alt="地方饮食介绍">
+            <h3>地方饮食介绍</h3>
+        </a>
+        <a href="korean_elements.html" class="card">
+            <img src="assets/korean_elements_image.jpg" alt="韩餐中的中国元素">
+            <h3>韩餐中的中国元素</h3>
+        </a>
+    </div>
 
 </body>
 

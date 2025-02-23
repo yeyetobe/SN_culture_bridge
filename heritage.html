@@ -133,6 +133,18 @@
         button:hover {
             background-color: #45a049;
         }
+
+        /* 左下角图片 */
+        .corner-image {
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            width: 250px;
+            /* 可根据需要调整图片大小 */
+            height: auto;
+            z-index: 1000;
+            /* 确保图片位于其他元素之上 */
+        }
     </style>
 </head>
 
@@ -176,6 +188,9 @@
     </div>
 
     <button id="backToHome" onclick="goToHome()">返回主页</button>
+
+    <!-- 左下角的PNG图片 -->
+    <img src="assets/hr_logo.png" alt="角落生物" class="corner-image">
 
     <script>
         function goToHome() {
