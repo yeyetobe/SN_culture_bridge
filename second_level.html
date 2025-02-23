@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第二关：捣碎土豆泥</title>
+    <p>疯狂点击土豆30次！！！</p>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #333;
+            margin-top: 50px;
+        }
+
+        #potatoImage {
+            width: 120px;
+            height: 120px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: transform 0.3s;
+        }
+
+        #potatoImage:hover {
+            transform: scale(1.1);
+        }
+
+        #score {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        #timer {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+
+        #nextButton {
+            display: none;
+            margin-top: 30px;
+            padding: 12px 25px;
+            font-size: 18px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #nextButton:hover {
+            background-color: #e68a00;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 28px;
+            }
+
+            #potatoImage {
+                width: 100px;
+                height: 100px;
+            }
+
+            #score,
+            #timer {
+                font-size: 18px;
+            }
+
+            #nextButton {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>第二关：捣碎土豆泥</h1>
+    <img id="potatoImage" src="assets/potato.PNG" alt="Potato" />
+
+    <div id="score">
+        <p>点击次数: <span id="currentClicks">0</span> / <span id="requiredClicks">30</span></p>
+    </div>
+
+    <div id="timer">时间：<span id="timeLeft">10</span>秒</div>
+
+    <button id="nextButton" onclick="goToThirdLevel()">下一关</button>
+
+    <script>
+        let currentClicks = 0;
+        const requiredClicks = 30;
+        const currentClicksDisplay = document.getElementById('currentClicks');
+        const timeLeftDisplay = document.getElementById('timeLeft');
+        const potatoImage = document.getElementById('potatoImage');
+        const nextButton = document.getElementById('nextButton');
+        let timeLeft = 10;
+        let timer;
+
+        // 点击土豆的逻辑
+        potatoImage.addEventListener('click', function () {
+            if (currentClicks < requiredClicks) {
+                currentClicks++;
+                currentClicksDisplay.textContent = currentClicks;
+
+                // 点击次数达到要求，显示下一关按钮
+                if (currentClicks === requiredClicks) {
+                    nextButton.style.display = 'inline';  // 显示“下一关”按钮
+                }
+            }
+        });
+
+        // 倒计时
+        function startTimer() {
+            timer = setInterval(function () {
+                timeLeft--;
+                timeLeftDisplay.textContent = timeLeft;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    nextButton.style.display = 'inline';  // 时间结束后显示“下一关”按钮
+                }
+            }, 1000);
+        }
+
+        startTimer();
+
+        // 跳转到第三关
+        function goToThirdLevel() {
+            const scoreFromFirstLevel = localStorage.getItem('score');
+            localStorage.setItem('score', parseInt(scoreFromFirstLevel) + currentClicks);  // 累加分数
+            window.location.href = "third_level.html";  // 跳转到第三关
+        }
+    </script>
+
+</body>
+
+</html>

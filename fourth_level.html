@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第四关：煎土豆</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #pan {
+            width: 300px;
+            height: 300px;
+            background-color: #4d4949;
+            position: relative;
+            margin: 20px auto;
+            border-radius: 50%;
+            border: 5px solid black;
+        }
+
+        .potato {
+            width: 50px;
+            height: 50px;
+            background-color: rgb(217, 217, 160);
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .flipped {
+            background-color: rgb(181, 136, 62);
+            /* 翻面后的颜色 */
+        }
+
+        #progressBar {
+            width: 100%;
+            height: 20px;
+            background-color: #ddd;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #progress {
+            width: 0%;
+            height: 100%;
+            background-color: green;
+        }
+
+        #bowl {
+            width: 150px;
+            height: 150px;
+            background-color: rgb(174, 107, 30);
+            position: absolute;
+            top: 460px;
+            left: 100px;
+            border-radius: 50%;
+            border: 5px solid brown;
+        }
+
+        #score {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        #flipTip {
+            font-size: 18px;
+            margin-top: 10px;
+            color: red;
+        }
+
+        #nextButton {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>第四关：煎土豆</h1>
+
+    <div id="pan">
+        <div class="potato" id="potato1" style="top: 50px; left: 100px;"></div>
+        <div class="potato" id="potato2" style="top: 100px; left: 50px;"></div>
+        <div class="potato" id="potato3" style="top: 150px; left: 150px;"></div>
+    </div>
+
+    <div id="progressBar">
+        <div id="progress"></div>
+    </div>
+
+    <div id="score">分数: <span id="scoreValue">0</span></div>
+    <div id="flipTip">等待5秒翻面...</div>
+    <p>剩余时间: <span id="time">15</span> 秒</p>
+
+    <div id="bowl"></div>
+
+    <button id="nextButton" onclick="goToNextLevel()">完成</button>
+
+    <script>
+        let score = 0;
+        let timeLeft = 13;
+        let flippedPotatoes = 0;
+        let potatoesInBowl = 0;
+        let allFlipped = false;
+
+        let potatoes = document.querySelectorAll('.potato');
+        let flipTip = document.getElementById("flipTip");
+        let scoreDisplay = document.getElementById("scoreValue");
+        let progressBar = document.getElementById("progress");
+
+        // 倒计时
+        let timer = setInterval(() => {
+            timeLeft--;
+            document.getElementById("time").textContent = timeLeft;
+            if (timeLeft === 0) {
+                clearInterval(timer);
+                if (potatoesInBowl === potatoes.length) {
+                    alert("恭喜通关！");
+                } else {
+                    alert("时间到了，挑战失败！（再试一次吧~）");
+                    location.reload();
+                }
+            }
+        }, 1000);
+
+        // 5秒后提示翻面
+        setTimeout(() => {
+            flipTip.textContent = "点击土豆翻面！";
+        }, 5000);
+
+        potatoes.forEach((potato) => {
+            potato.addEventListener("click", function () {
+                if (!this.classList.contains("flipped")) {
+                    this.classList.add("flipped");
+                    flippedPotatoes++;
+                }
+
+                if (flippedPotatoes === potatoes.length) {
+                    allFlipped = true;
+                    flipTip.textContent = "翻面完成！再等5秒可以拖拽";
+                    setTimeout(() => {
+                        flipTip.textContent = "可以拖动土豆到碗里！";
+                        enableDragging();
+                    }, 5000);
+                }
+            });
+        });
+
+        function enableDragging() {
+            potatoes.forEach((potato) => {
+                potato.addEventListener("mousedown", function (e) {
+                    if (!allFlipped) return;
+
+                    // 获取容器的偏移量
+                    let panRect = document.getElementById("pan").getBoundingClientRect();
+                    let offsetX = e.clientX - this.getBoundingClientRect().left;
+                    let offsetY = e.clientY - this.getBoundingClientRect().top;
+                    let draggedPotato = this;
+
+                    function movePotato(e) {
+                        // 考虑容器的位置和页面滚动
+                        draggedPotato.style.left = e.clientX - panRect.left - offsetX + window.scrollX + "px";
+                        draggedPotato.style.top = e.clientY - panRect.top - offsetY + window.scrollY + "px";
+                    }
+
+                    function dropPotato() {
+                        let bowl = document.getElementById("bowl").getBoundingClientRect();
+                        let potatoRect = draggedPotato.getBoundingClientRect();
+
+                        if (
+                            potatoRect.left < bowl.right &&
+                            potatoRect.right > bowl.left &&
+                            potatoRect.top < bowl.bottom &&
+                            potatoRect.bottom > bowl.top
+                        ) {
+                            draggedPotato.style.display = "none";
+                            potatoesInBowl++;
+                            score += 10;
+                            scoreDisplay.textContent = score;
+                            updateProgressBar();
+                            checkGameStatus();
+                        }
+
+                        document.removeEventListener("mousemove", movePotato);
+                        document.removeEventListener("mouseup", dropPotato);
+                    }
+
+                    document.addEventListener("mousemove", movePotato);
+                    document.addEventListener("mouseup", dropPotato);
+                });
+            });
+        }
+
+        function updateProgressBar() {
+            progressBar.style.width = (potatoesInBowl / potatoes.length) * 100 + "%";
+        }
+
+        function checkGameStatus() {
+            if (potatoesInBowl === potatoes.length) {
+                document.getElementById("nextButton").style.display = "block";
+            }
+        }
+
+        function goToNextLevel() {
+            alert("完成任务，回到游戏主页");
+            window.location.href = "challenge.html"; // 跳转到 challenge.html 页面
+        }
+    </script>
+</body>
+
+</html>

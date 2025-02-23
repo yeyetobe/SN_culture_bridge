@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第一关：收集食材</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fafafa;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-size: 32px;
+            color: #333;
+        }
+
+        #gameArea {
+            width: 80%;
+            height: 300px;
+            margin: 20px auto;
+            position: relative;
+            background-color: #eaeaea;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #foodItem {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        #score {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        #countdown {
+            font-size: 24px;
+            color: #e74c3c;
+            margin-top: 20px;
+        }
+
+        #nextButton {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            background-color: #ff9900;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none;
+            transition: background-color 0.3s;
+        }
+
+        #nextButton:hover {
+            background-color: #e68a00;
+        }
+
+        .game-info {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>第一关：收集食材</h1>
+
+    <div id="gameArea">
+        <!-- 土豆图片替换了之前的方块 -->
+        <img id="foodItem" src="assets/potato.PNG" style="left: 0; top: 0;" />
+    </div>
+
+    <div class="game-info">
+        <p>已收集食材: <span id="collected">0</span> / <span id="goal">10</span></p>
+        <div id="countdown">剩余时间: 10秒</div>
+    </div>
+
+    <button id="nextButton" onclick="goToSecondLevel()">下一关</button>
+
+    <script>
+        let collected = 0;
+        const goal = 10;
+        const collectedDisplay = document.getElementById('collected');
+        const foodItem = document.getElementById('foodItem');
+        const nextButton = document.getElementById('nextButton');
+        const countdownDisplay = document.getElementById('countdown');
+        let countdown = 10;
+
+        // 获取游戏区域的宽高
+        const gameArea = document.getElementById('gameArea');
+        const gameAreaWidth = gameArea.offsetWidth;
+        const gameAreaHeight = gameArea.offsetHeight;
+
+        // 游戏区域点击事件
+        document.addEventListener('click', function (e) {
+            if (e.target === foodItem) {
+                collected++;
+                collectedDisplay.textContent = collected;
+
+                // 更新食材位置，确保不会超出游戏区域
+                foodItem.style.left = Math.random() * (gameAreaWidth - 50) + 'px';  // 限制在游戏区宽度内
+                foodItem.style.top = Math.random() * (gameAreaHeight - 50) + 'px';  // 限制在游戏区高度内
+
+                if (collected === goal) {
+                    nextButton.style.display = 'inline'; // 显示“下一关”按钮
+                }
+            }
+        });
+
+        // 倒计时功能
+        const countdownInterval = setInterval(function () {
+            countdown--;
+            countdownDisplay.textContent = `剩余时间: ${countdown}秒`;
+
+            if (countdown === 0) {
+                clearInterval(countdownInterval); // 停止倒计时
+                if (collected < goal) {
+                    nextButton.style.display = 'inline'; // 如果时间结束，但没有达到目标，显示“下一关”按钮
+                }
+            }
+        }, 1000);
+
+        function goToSecondLevel() {
+            localStorage.setItem('score', collected);  // 存储分数
+            window.location.href = "second_level.html";  // 跳转到第二关
+        }
+    </script>
+
+</body>
+
+</html>

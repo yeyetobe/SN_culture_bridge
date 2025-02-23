@@ -1,7 +1,197 @@
-<div id="question1">
-    <p>谁是这位著名人物？</p>
-    <button onclick="checkAnswer(1, 'a')">A. 孙中山</button>
-    <button onclick="checkAnswer(1, 'b')">B. 毛泽东</button>
-    <button onclick="checkAnswer(1, 'c')">C. 邓小平</button>
-    <button onclick="checkAnswer(1, 'd')">D. 习近平</button>
-</div>
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>红色文化选择题</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ab5b5b;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+
+        }
+
+        .question-container {
+            background-color: #FFF;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .score-display {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            font-size: 18px;
+            color: green;
+        }
+
+        .buttons-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            background-color: #3d3c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .buttons-container button:hover {
+            background-color: #bbb;
+        }
+
+        .feedback-wrong {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>红色文化选择题</h2>
+
+    <div class="score-display">当前得分: <span id="score">0</span></div>
+
+    <div id="questionContainer" class="question-container">
+        <p id="questionText">题目加载中...</p>
+        <div class="buttons-container">
+            <button onclick="checkAnswer(1, 'a')">A</button>
+            <button onclick="checkAnswer(1, 'b')">B</button>
+            <button onclick="checkAnswer(1, 'c')">C</button>
+            <button onclick="checkAnswer(1, 'd')">D</button>
+        </div>
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <div class="score-display">
+        当前题号: <span id="questionNumber">1</span> / 6
+    </div>
+
+    <script>
+        let score = 0;
+        let currentQuestion = 0;
+
+        // 题目数据
+        const questions = [
+            {
+                text: "“他是安吉县最早的共产党员之一，1927年以游方郎中的身份在孝丰镇开展地下工作，为浙北第一党支部的成立作出了重要贡献。他是谁？”",
+                correctAnswer: "b",
+                options: {
+                    a: "粟裕",
+                    b: "方铁成",
+                    c: "董必武",
+                    d: "李先念"
+                }
+            },
+            {
+                text: "这座陵园位于安吉县孝丰镇，是为纪念新四军天目山反顽战役中牺牲的烈士而建，内有纪念碑、烈士墓和纪念馆。这是哪里？",
+                correctAnswer: "b",
+                options: {
+                    a: "余村“两山”景区  ",
+                    b: "孝丰革命烈士陵园 ",
+                    c: "姚家大院  ",
+                    d: "老石坎村  "
+                }
+            },
+            {
+                text: "1945年，新四军苏浙军区在安吉天目山地区进行了三次重要战役，成功开辟了浙西抗日根据地。这场战役的名称是什么？",
+                correctAnswer: "b",
+                options: {
+                    a: "黄麻起义",
+                    b: "天目山反顽战役",
+                    c: "淮海战役",
+                    d: "平型关大捷"
+                }
+            },
+            {
+                text: "1935年3月，在遵义县枫香镇苟坝村召开的一次重要会议上，毛泽东反对进攻打鼓新场的计划，并成功说服周恩来和朱德，避免了红军全军覆没。这次会议的名称是什么？",
+                correctAnswer: "c",
+                options: {
+                    a: "瓦窑堡会议",
+                    b: "古田会议",
+                    c: "苟坝会议",
+                    d: "遵义会议"
+                }
+            },
+            {
+                text: "1931年‘九一八’事变后，日军企图夺取嫩江大桥，进而占领黑龙江省。黑龙江省代主席马占山率领爱国官兵在此进行了英勇抵抗，这场战斗被称为______。",
+                correctAnswer: "a",
+                options: {
+                    a: "江桥抗战",
+                    b: "九一八事变",
+                    c: "平型关大捷",
+                    d: "卢沟桥事变"
+                }
+            },
+            {
+                text: "1959年至1961年，新中国遭遇严重自然灾害，上海、江苏等地孤儿院的孩子面临生存危机。时任内蒙古自治区人民政府主席______提议将这些孤儿接到内蒙古，由当地牧民收养，这一行动被称为‘三千孤儿入内蒙’。",
+                correctAnswer: "c",
+                options: {
+                    a: "周恩来",
+                    b: "康克清",
+                    c: "乌兰夫",
+                    d: "马占山"
+                }
+            }
+        ];
+
+        function loadQuestion() {
+            if (currentQuestion >= questions.length) {
+                alert(`游戏结束！你的总得分是: ${score}`);
+                return;
+            }
+
+            const question = questions[currentQuestion];
+            document.getElementById("questionText").textContent = question.text;
+            document.getElementById("questionNumber").textContent = currentQuestion + 1;
+
+            const buttons = document.querySelectorAll(".buttons-container button");
+            buttons.forEach((button, index) => {
+                const optionKey = Object.keys(question.options)[index];
+                button.textContent = `${optionKey}. ${question.options[optionKey]}`;
+            });
+
+            document.getElementById("feedback").textContent = '';
+        }
+
+        function checkAnswer(questionNumber, selectedAnswer) {
+            const question = questions[currentQuestion];
+            const feedback = document.getElementById("feedback");
+
+            if (selectedAnswer === question.correctAnswer) {
+                score++;
+                feedback.textContent = "恭喜你，回答正确！";
+                feedback.classList.remove("feedback-wrong");
+            } else {
+                feedback.textContent = "回答错误！正确答案是: " + question.correctAnswer.toUpperCase();
+                feedback.classList.add("feedback-wrong");
+            }
+
+            document.getElementById("score").textContent = score;
+
+            setTimeout(() => {
+                currentQuestion++;
+                loadQuestion();
+            }, 2000);
+        }
+
+        loadQuestion();
+    </script>
+
+</body>
+
+</html>
