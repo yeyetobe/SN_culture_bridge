@@ -6,7 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>红色文化</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <style>
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -18,60 +32,56 @@
             background-size: contain;
         }
 
-        /* Swiper 容器样式 */
+        /* Swiper 样式 */
         .swiper-container {
-            position: relative;
             width: 80%;
-            /* 宽度调整为80% */
-            height: 60%;
-            /* 高度调整为60% */
-            margin: 0 auto;
-            /* 居中显示 */
+            height: 400px;
+            margin-top: 50px;
+            margin: auto;
+            border-radius: 15px;
             overflow: hidden;
-        }
-
-        .swiper-wrapper {
-            display: flex;
-            transition: transform 0.5s ease;
-            width: 400%;
-            /* 4个幻灯片 */
+            opacity: 0.8;
+            /* 整体透明度 */
         }
 
         .swiper-slide {
-            flex: 0 0 100%;
             background-color: #fff;
-            border-radius: 20px;
+            border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            position: relative;
         }
 
         .swiper-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 20px;
+            border-radius: 15px;
         }
 
-        .swiper-pagination {
+        /* 文字描述 */
+        .slide-captions-container {
             position: absolute;
-            bottom: 10px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            < !-- background-color: rgba(255, 255, 255, 0.5);
+            -->padding: 10px;
+            border-radius: 5px;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
         }
 
-        .pagination-dot {
-            width: 10px;
-            height: 10px;
-            background-color: white;
-            border-radius: 50%;
-            margin: 0 5px;
-            cursor: pointer;
+        /* 链接样式 */
+        .swiper-slide a {
+            display: block;
+            width: 100%;
+            height: 100%;
         }
 
-        .active-dot {
-            background-color: #201818;
+        .swiper-pagination-bullet-active {
+            background-color: #452727;
+            /* 设置为红色 */
         }
     </style>
 </head>
@@ -89,82 +99,73 @@
 
     <h1>红色文化</h1>
     <p>这里是红色文化主题页面。</p>
-
     <!-- Swiper 容器 -->
     <div class="swiper-container">
         <div class="swiper-wrapper">
+            <!-- 每个 slide 都可以是图片或者内容 -->
             <div class="swiper-slide">
-                <img src="your-image-1.jpg" alt="红色文化1">
+                <a href="red_aj_details.html">
+                    <img src="assets/red_aj.jpg" alt="红色文化1">
+                    <div class="slide-captions-container">
+                        <h2>浙江安吉</h2>
+                    </div>
+                </a>
             </div>
             <div class="swiper-slide">
-                <img src="your-image-2.jpg" alt="红色文化2">
+                <a href="red_gz_details.html">
+                    <img src="assets/red_gz.jpg" alt="红色文化2">
+                    <div class="slide-captions-container">
+                        <h2>贵州遵义</h2>
+                    </div>
+                </a>
             </div>
             <div class="swiper-slide">
-                <img src="your-image-3.jpg" alt="红色文化3">
+                <a href="red_hlj_details.html">
+                    <img src="assets/red_hlj.jpg" alt="红色文化3">
+                    <div class="slide-captions-container">
+                        <h2>黑龙江伊春</h2>
+                    </div>
+                </a>
             </div>
             <div class="swiper-slide">
-                <img src="your-image-4.jpg" alt="红色文化4">
+                <a href="red_nm_details.html">
+                    <img src="assets/red_nm.jpg" alt="红色文化4">
+                    <div class="slide-captions-container">
+                        <h2>内蒙古赤峰</h2>
+                    </div>
+                </a>
             </div>
         </div>
 
         <!-- 分页器 -->
-        <div class="swiper-pagination">
-            <div class="pagination-dot active-dot"></div>
-            <div class="pagination-dot"></div>
-            <div class="pagination-dot"></div>
-            <div class="pagination-dot"></div>
-        </div>
+        <div class="swiper-pagination"></div>
     </div>
+
+    <!-- 引入 Swiper 脚本 -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // 初始化 Swiper
+        const swiper = new Swiper('.swiper-container', {
+            loop: true,  // 循环播放
+            autoplay: {
+                delay: 2500, // 自动播放间隔，2.5秒
+                disableOnInteraction: false,  // 用户交互后不停止自动播放
+            },
+            pagination: {
+                el: '.swiper-pagination', // 分页器容器
+                clickable: true, // 可以点击分页器跳转
+            },
+            effect: 'fade', // 切换效果，选项有 slide, fade 等
+        });
+    </script>
 
     <button id="backToHome" onclick="goToHome()">返回主页</button>
 
     <script>
-        let currentIndex = 0;
-        const slides = document.querySelectorAll('.swiper-slide');
-        const paginationDots = document.querySelectorAll('.pagination-dot');
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
-
-        // 更新幻灯片和分页器
-        function updateSlide() {
-            swiperWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-            paginationDots.forEach(dot => dot.classList.remove('active-dot'));
-            paginationDots[currentIndex].classList.add('active-dot');
+        // 返回主页功能
+        function goToHome() {
+            window.location.href = 'index.html';
         }
-
-        // 鼠标移动时切换幻灯片
-        let startX;
-        let isMouseDown = false;
-
-        swiperWrapper.addEventListener('mousedown', (e) => {
-            startX = e.pageX;
-            isMouseDown = true;
-        });
-
-        swiperWrapper.addEventListener('mousemove', (e) => {
-            if (!isMouseDown) return;
-            const moveX = e.pageX - startX;
-            if (moveX > 50 && currentIndex > 0) {
-                currentIndex--;
-                updateSlide();
-                startX = e.pageX;
-            } else if (moveX < -50 && currentIndex < slides.length - 1) {
-                currentIndex++;
-                updateSlide();
-                startX = e.pageX;
-            }
-        });
-
-        swiperWrapper.addEventListener('mouseup', () => {
-            isMouseDown = false;
-        });
-
-        // 点击分页器点时切换
-        paginationDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentIndex = index;
-                updateSlide();
-            });
-        });
     </script>
 </body>
 

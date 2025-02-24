@@ -12,6 +12,9 @@ nav {
     padding: 10px;
     font-family: Arial, sans-serif;
     /* 添加这一行，确保导航栏字体一致 */
+    position: sticky;
+    top: 0;
+    /* 确保导航栏固定在顶部 */
 }
 
 nav a {
