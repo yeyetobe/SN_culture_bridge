@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黑龙江-饮食文化</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: flex-start;
+            /* 让内容从顶部开始 */
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* 项目标题置顶 */
+        .category {
+            background-color: #F7E6C4;
+            color: rgb(51, 46, 32);
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            /* 调整字体大小 */
+            position: fixed;
+            /* 固定在顶部 */
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* 保证在最上层 */
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #F7E6C4;
+            border-radius: 20px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 180px;
+            /* 给导航栏设置顶部间距，避免被标题遮挡 */
+        }
+
+        .navbar button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 12px 30px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 30px;
+            /* 圆角按钮 */
+        }
+
+        .navbar button:hover {
+            background-color: #ece9b2;
+        }
+
+        .navbar input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+        }
+
+        /* 页面内容区域 */
+        .content {
+            display: none;
+            padding: 20px;
+            < !-- text-align: center;
+            -->background-color: white;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 当前显示的内容 */
+        .active {
+            display: block;
+        }
+
+        img {
+            max-width: 50%;
+            height: 50%;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 项目标题 -->
+    <div class="category">
+        <h1>黑龙江-饮食文化</h1>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <button onclick="showContent(1)">锅包肉</button>
+        <button onclick="showContent(2)">地三鲜</button>
+        <button onclick="showContent(3)">冻梨</button>
+        <!-- <button onclick="showContent(4)">松桃苗绣</button>
+        <button onclick="showContent(5)">大方漆器</button> -->
+
+    </div>
+
+    <!-- 页面内容 -->
+    <div id="content1" class="content">
+        <h2>锅包肉</h2>
+        <p>🔴简介：锅包肉（英文名：Fried Pork in
+            Scoop），原名锅爆肉，光绪年间始创自哈尔滨道台府府尹杜学瀛厨师郑兴文之手。锅包肉是为适应外宾口味，把咸鲜口味的“焦烧肉条”改成了一道酸甜口味的菜肴。成菜后，色泽金黄，口味酸甜。2022年，哈尔滨锅包肉入选国家《地标美食名录》。
+        </p>
+        <p>🔴做法：①猪里脊肉切成薄片，用盐、料酒腌制。②土豆淀粉加水泡好，倒掉上层清水后，加少许油，放入肉片挂糊。③锅中倒油，七成热时逐片下入肉片，中小火炸至微黄捞出。④待油温升高后，复炸肉片20-30秒，快速捞出。⑤锅留底油，爆香葱丝、姜丝、蒜片，倒入白糖、米醋、生抽、香油调好的料汁，煮至浓稠，放入胡萝卜丝和香菜段。⑥下入炸好的肉片快速翻炒均匀，淋油出锅。
+        </p>
+        <p>🔴起源：清朝，旗人郑兴文1907年到哈尔滨滨江道衙门当官厨，给道台杜学瀛料理膳食。道台府里经常会宴请国外宾客，尤其是俄罗斯客人。由于外国人喜欢吃甜酸口味。杜学瀛就命府内厨师变换菜肴口味。郑兴文就把原来咸鲜口味的“焦烧肉条”改成了酸甜口味的菜肴，这一改使哈尔滨成为锅包肉的起源地。锅包肉这道菜深得俄罗斯客人喜爱，由于用急火快炒，把铁锅烧热，把汁淋到锅里，浸透到肉里，所以起名叫“锅爆肉”。俄罗斯人发“爆”音为包，时间一长，“锅爆肉”就演变成为“锅包肉”。
+        </p>
+        <img src="assets/food_hlj1.jpg" alt="锅包肉">
+
+    </div>
+    <div id="content2" class="content">
+        <h2>地三鲜</h2>
+        <p>🔴简介：
+            东北地三鲜是一道极具代表性的东北菜，主要食材为茄子、土豆和青椒，这三种食材搭配在一起，营养丰富，口感多样。茄子软糯，土豆绵密，青椒脆爽，整道菜色泽诱人，味道浓郁，咸香可口，是东北家庭餐桌上的常客，也深受各地食客喜爱。
+        </p>
+        <p>🔴做法：①茄子土豆去皮切块，青椒洗净切小块，葱姜蒜切末。②调汁，碗中加入生抽、蚝油、白糖、盐、鸡精和适量清水，再加入1勺淀粉搅拌均匀。③土豆块放入清水中浸泡，捞出沥干水分。茄子块用盐腌制10分钟挤出水分。④锅中多倒些油，油热后放入土豆块炸至表面金黄，捞出。再放入茄子块炸软捞出。⑤锅中留少许底油，放入葱、姜、蒜末爆香，加入青椒块翻炒至断生。⑥倒入炸好的土豆和茄子，翻炒均匀，淋入碗汁，翻炒至汤汁浓稠即可。
+        </p>
+        <p>🔴来源:地三鲜的来源有多种说法
+            ①与古代“尝三鲜”习俗相关:我国古代民间有“立夏尝三鲜”的习俗，三鲜分为“地三鲜”“树三鲜”和“水三鲜”。其中“地三鲜”最初指的是苋菜、元麦和蚕豆。后来这一习俗传到东北，当地的土豆、茄子和辣椒成为了新的“地三鲜”，并被炒在一起，因其味道独特，逐渐成为东北的名菜。
+            ②起源于清朝末年:有说法认为，东北地三鲜最早诞生于辽宁锦州。在清朝末年，东北百姓生活艰苦，为了填饱肚子，人们利用当地盛产的土豆、茄子和辣椒等食材，探索出了新的烹饪方法，地三鲜便应运而生。
+            ③还有一种说法称:清朝年间，一位巡视东北的大臣发现当地百姓饮食单调，于是举办了一场菜肴大赛。当地百姓用土豆、茄子和青椒烹制出了一道美味佳肴，这道菜后来被称为地三鲜。
+
+        </p>
+        <img src="assets/food_hlj2.jpg" alt="地三鲜">
+    </div>
+    <div id="content3" class="content">
+        <h2>冻梨</h2>
+        <p>🔴简介：
+            东北冻梨是一种独特的冬季美食。冻梨的制作过程非常简单，但需要借助东北地区极低的自然气温。通常选用花盖梨、秋白梨或白梨等品种，将成熟的梨放置在户外低温环境中反复冷冻和解冻，经过数天甚至数周的时间，梨的表皮会变得乌黑发亮，而内部果肉则变得细腻多汁。冻梨的口感独特，甜而不腻，酸甜适中，冰凉沁心，是东北冬季不可或缺的美食。
+        </p>
+        <p>🔴起源：东北冻梨的历史可以追溯到一千多年前的辽代。据文献记载，契丹人早在辽代就有将梨子放在户外用冰雪覆盖进行冷冻的习惯。北宋使臣庞元英在《文昌杂录》中提到，他在出使辽国时尝到了这种经过冷冻的梨。这种古老的储存方式不仅延长了梨的保质期，还让梨在解冻后呈现出独特的风味，逐渐演变成一种独特的食品加工方法。
+        </p>
+
+        <img src="assets/food_hlj3.jpg" alt="冻梨">
+
+    </div>
+    <!-- <div id="content4" class="content">
+        <h2>松桃苗绣</h2>
+        <p>松桃苗绣指贵州省松桃县范围内生产的苗族刺绣，多以花鸟虫鱼、日月山川为题材，其构图夸张浪漫，图案介于具象与抽象之间，着色大胆自由，针法绣法多样，具有鲜明的风格。内容体现了苗族人民祖先崇拜、自然崇拜、图腾崇拜的思想。2015年7月，松桃苗绣注册国际级地理标志证明商标。
+        </p>
+        <img src="assets/gz_mx.jpg" alt="松桃苗绣">
+    </div>
+    <div id="content5" class="content">
+        <h2>大方漆器</h2>
+        <p>大方漆器，贵州省大方县特产，中国国家地理标志产品。
+            大方漆器已有600余年历史，其漆制品采用牛、羊等皮革和棉、麻、绸、木等做胎，用当地的优质生漆作原料，明洪武年间形成了一套以皮胎漆器为主的漆器制作工艺。大方漆器有较高的欣赏价值和实用价值，是贵州省优秀的民族民间艺术瑰宝。曾与贵州茅台酒、贵州玉屏箫笛合称为“贵州三宝”。2008年，“彝族漆器髹饰技艺”被列入国家级非物质文化遗产名录。
+            清《乾隆通志》记载：“黔之革器以大定（大方）为最佳”，大方皮胎漆器成为全国特色，并独创了“隐纹”装饰技法。大方漆器制作工艺独特，制作要求高，工艺流程繁杂，主要有制漆、胎胚、灰地、漆地、装饰五大工艺，50多道工序，82道生产环节，产品做工精细，品种齐全，造型生动，深受国内外消费者及收藏人士的青睐。
+            (唱词)、音乐(唱腔)和舞蹈(如“龙江浪三场”等)是最具有魅力、与众不同的精华部分。
+        </p>
+        <img src="assets/gz_qq.jpg" alt="大方漆器">
+    </div>
+    </div> -->
+
+    <script>
+        // 显示对应页面的内容
+        function showContent(pageNumber) {
+            // 隐藏所有页面
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // 显示选中的页面
+            const activeContent = document.getElementById('content' + pageNumber);
+            activeContent.classList.add('active');
+        }
+
+        // 默认显示第一个页面
+        showContent(1);
+    </script>
+
+</body>
+
+</html>

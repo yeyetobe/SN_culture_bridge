@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>韩餐与中餐比较</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F7E6C4;
+        }
+
+        /* 容器样式 */
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* 标题居中 */
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 40px;
+        }
+
+        /* 卡片容器 */
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            /* 确保卡片不会重叠 */
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        /* 单个卡片样式 */
+        .card {
+            background-color: #fff;
+            width: calc(20% - 20px);
+            /* 每张卡片占 25% 宽度，减去间距 */
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        /* 卡片点击效果 */
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h3 {
+            font-size: 1.4em;
+            color: #444;
+        }
+
+        .card img {
+            width: 80%;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        /* 类似卡片的“二者相似原因”部分 */
+        .similarity-card {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+            margin-top: 40px;
+        }
+
+        .similarity-card:hover {
+            transform: scale(1.05);
+        }
+
+        .similarity-card h3 {
+            font-size: 1.5em;
+            color: #444;
+        }
+
+        /* 栏目文本 */
+        .similarity-card p {
+            font-size: 1.1em;
+            color: #777;
+            margin-top: 10px;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 20px);
+                /* 中屏时每行显示两个卡片 */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+                /* 小屏时每行显示一个卡片 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- 标题 -->
+        <h1>韩餐与中餐的对比</h1>
+
+        <!-- 卡片容器 -->
+        <div class="card-container">
+            <div class="card" onclick="window.location.href='yearg.html'">
+                <h3> 炒年糕（떡볶이） vs. 炒年糕</h3>
+                <img src="assets/yearg.jpg" alt="中式炒年糕">
+            </div>
+            <div class="card" onclick="window.location.href='tcr.html'">
+                <h3>糖醋肉（탕수육） vs. 糖醋里脊</h3>
+                <img src="assets/tcr.jpg" alt="糖醋肉">
+            </div>
+            <div class="card" onclick="window.location.href='pbb.html'">
+                <h3>拌饭（비빔밥） vs. 盖浇饭</h3>
+                <img src="assets/pbb.jpg" alt="拌饭">
+            </div>
+            <div class="card" onclick="window.location.href='lm.html'">
+                <h3>韩式冷面（냉면） vs. 中式凉面</h3>
+                <img src="assets/lm.jpg" alt="冷面">
+            </div>
+        </div>
+
+        <!-- 类似卡片的“二者相似原因”部分 -->
+        <div class="similarity-card" onclick="window.location.href='xs-reasons.html'">
+            <h3>二者相似的原因</h3>
+            <p>点击查看韩餐和中餐的相似之处</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

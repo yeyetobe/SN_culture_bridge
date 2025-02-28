@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>地方饮食介绍</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* 页面整体样式 */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #F7E6C4, rgb(240, 217, 162));
+            /* 背景渐变色 */
+            margin: 0;
+            padding: 0;
+            position: relative;
+            color: #333;
+        }
+
+        /* 在页面左上角固定位置显示透明PNG图标 */
+        .logo {
+            position: absolute;
+            top: 40px;
+            left: 10px;
+            width: 250px;
+            height: auto;
+            z-index: 100;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 36px;
+            margin-top: 80px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .content {
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        /* 创建卡片容器并居中 */
+        .food-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            padding-bottom: 50px;
+        }
+
+        /* 每张卡片的样式 */
+        .food-card {
+            width: 270px;
+            height: 350px;
+            background-color: #f7b258;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            text-decoration: none;
+            transform: scale(0.9);
+            opacity: 0;
+            animation: slideIn 1s forwards;
+            transition: transform 0.3s ease;
+        }
+
+        /* 卡片悬浮效果 */
+        .food-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* 动效：四个地方美食逐个显示 */
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .food-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+
+        .food-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+
+        .food-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .food-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        /* 卡片内图片样式 */
+        .food-card img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            border-bottom: 2px solid #fff;
+        }
+
+        /* 卡片标题样式 */
+        .food-card h3 {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 22px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+            letter-spacing: 2px;
+        }
+
+        /* 响应式设计，适应小屏幕 */
+        @media (max-width: 768px) {
+            .food-container {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .food-card {
+                width: 100%;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 添加透明PNG图片的logo -->
+    <img src="assets/diet_logo.png" alt="Logo" class="logo">
+
+    <h1>地方饮食介绍</h1>
+    <p class="content">探索中国各地的美食文化，品味每个地方的独特味道。</p>
+
+    <!-- 四个地方美食展示区域 -->
+    <div class="food-container">
+        <a href="food_nm.html" class="food-card">
+            <img src="assets/food_nmfm.jpg" alt="内蒙古美食">
+            <h3>内蒙古美食</h3>
+        </a>
+        <a href="food_hlj.html" class="food-card">
+            <img src="assets/food_hljfm.jpg" alt="黑龙江美食">
+            <h3>黑龙江美食</h3>
+        </a>
+        <a href="food_gz.html" class="food-card">
+            <img src="assets/food_gzfm.jpg" alt="贵州美食">
+            <h3>贵州美食</h3>
+        </a>
+        <a href="food_hz.html" class="food-card">
+            <img src="assets/food_hzfm.jpg" alt="湖州美食">
+            <h3>湖州美食</h3>
+        </a>
+    </div>
+
+</body>
+
+</html>

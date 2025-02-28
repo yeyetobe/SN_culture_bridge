@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安吉-非遗文化</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: flex-start;
+            /* 让内容从顶部开始 */
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* 项目标题置顶 */
+        .category {
+            background-color: #3d4e65;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            /* 调整字体大小 */
+            position: fixed;
+            /* 固定在顶部 */
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* 保证在最上层 */
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #3d4e65;
+            border-radius: 20px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 180px;
+            /* 给导航栏设置顶部间距，避免被标题遮挡 */
+        }
+
+        .navbar button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 12px 30px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 30px;
+            /* 圆角按钮 */
+        }
+
+        .navbar button:hover {
+            background-color: #ece9b2;
+        }
+
+        .navbar input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+        }
+
+        /* 页面内容区域 */
+        .content {
+            display: none;
+            padding: 20px;
+            < !-- text-align: center;
+            -->background-color: white;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 当前显示的内容 */
+        .active {
+            display: block;
+        }
+
+        img {
+            max-width: 50%;
+            height: 50%;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 项目标题 -->
+    <div class="category">
+        <h1>安吉-非遗文化</h1>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <button onclick="showContent(1)">安吉竹编</button>
+        <button onclick="showContent(2)">安吉白茶制作技艺</button>
+        <button onclick="showContent(3)">上舍化龙灯</button>
+        <button onclick="showContent(4)">鄣吴竹扇制作技艺</button>
+        <button onclick="showContent(5)">安吉民歌</button>
+
+    </div>
+
+    <!-- 页面内容 -->
+    <div id="content1" class="content">
+        <h2>安吉竹编</h2>
+        <p>安吉竹编是安吉县的传统手工艺，已有数百年历史。安吉作为“中国竹乡”，竹资源丰富，竹编技艺也因此得以传承和发展。竹编制品种类繁多，包括生活用品、装饰品和艺术品，如竹篮、竹箱、竹席、竹扇等。安吉竹编以其细腻的编织工艺和实用性著称，已被列入中国非物质文化遗产名录。近年来，安吉竹编还融入了现代设计元素，成为时尚与传统文化结合的典范。
+        </p>
+        <img src="assets/aj_zb.png" alt="安吉竹编">
+
+    </div>
+    <div id="content2" class="content">
+        <h2>安吉白茶制作技艺</h2>
+        <p>安吉白茶是中国绿茶的代表之一，其制作技艺历史悠久，包括采摘、摊放、杀青理条、初烘、摊凉、复烘、收灰干燥等七道工序。安吉白茶以其“白叶绿脉”的独特外观和鲜爽甘甜的口感而闻名。2022年，安吉白茶制作技艺作为“中国传统制茶技艺及其相关习俗”的一部分，被列入联合国教科文组织人类非物质文化遗产代表作名录。安吉白茶不仅是当地的重要经济产业，也是安吉文化的象征。
+        </p>
+        <img src="assets/aj_bc.png" alt="安吉白茶制作技艺">
+    </div>
+    <div id="content3" class="content">
+        <h2>上舍化龙灯</h2>
+        <p>化龙灯是安吉县梅溪镇上舍村的传统民间灯舞艺术，已有200多年历史。其独特之处在于“进门是花灯，出门是龙灯”，表演时花灯可连接成一条龙，寓意吉祥如意、风调雨顺。化龙灯的表演形式多样，包括舞龙、舞灯和音乐伴奏，具有浓厚的民俗文化特色。2014年，化龙灯被列入国家级非物质文化遗产名录，成为安吉民俗文化的重要代表。
+        </p>
+        <img src="assets/anji_ld.jpg" alt="上舍化龙灯">
+        <img src="assets//aj_ld2.jpg" alt="上舍化龙灯">
+    </div>
+    <div id="content4" class="content">
+        <h2>鄣吴竹扇制作技艺</h2>
+        <p>鄣吴竹扇是安吉县鄣吴镇的传统手工艺，以其精美的制作工艺和文化内涵著称。竹扇制作包括选竹、劈篾、编织、雕刻、绘画等多道工序，每一把竹扇都是工匠心血的结晶。鄣吴竹扇不仅实用，还具有很高的艺术价值，常作为礼品或收藏品。2023年，鄣吴竹扇制作技艺入选第六批浙江省级非遗代表性项目名录，成为当地文化产业的重要组成部分。
+        </p>
+        <img src="assets/aj_zs.jpg" alt="鄣吴竹扇制作技艺">
+    </div>
+    <div id="content5" class="content">
+        <h2>安吉民歌</h2>
+        <p>安吉民歌是安吉县的传统音乐艺术，以其朴实、自然、富有乡土气息的特点而闻名。歌词多表达对生活、爱情和家乡的情感，旋律优美，节奏明快。安吉民歌的演唱形式多样，包括独唱、对唱和合唱，常在节日庆典和民俗活动中表演。安吉民歌已被列入中国非物质文化遗产名录，是安吉人民精神文化生活的重要组成部分。
+        </p>
+        <img src="assets/aj_mg.jpg" alt="安吉民歌">
+    </div>
+    </div>
+
+    <script>
+        // 显示对应页面的内容
+        function showContent(pageNumber) {
+            // 隐藏所有页面
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // 显示选中的页面
+            const activeContent = document.getElementById('content' + pageNumber);
+            activeContent.classList.add('active');
+        }
+
+        // 默认显示第一个页面
+        showContent(1);
+    </script>
+
+</body>
+
+</html>

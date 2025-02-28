@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>内蒙古-红色文化</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: flex-start;
+            /* 让内容从顶部开始 */
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        /* 项目标题置顶 */
+        .category {
+            background-color: #ab5b5b;
+            color: rgb(255, 255, 255);
+            width: 100%;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            /* 调整字体大小 */
+            position: fixed;
+            /* 固定在顶部 */
+            top: 0;
+            left: 0;
+            z-index: 1;
+            /* 保证在最上层 */
+        }
+
+        /* 导航栏样式 */
+        .navbar {
+            display: flex;
+            justify-content: center;
+            background-color: #ab5b5b;
+            border-radius: 20px;
+            padding: 10px 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 180px;
+            /* 给导航栏设置顶部间距，避免被标题遮挡 */
+        }
+
+        .navbar button {
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            padding: 12px 30px;
+            margin: 0 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 30px;
+            /* 圆角按钮 */
+        }
+
+        .navbar button:hover {
+            background-color: #ece9b2;
+        }
+
+        .navbar input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 30px;
+            border: 1px solid #ccc;
+        }
+
+        /* 页面内容区域 */
+        .content {
+            display: none;
+            padding: 20px;
+            < !-- text-align: center;
+            -->background-color: white;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* 当前显示的内容 */
+        .active {
+            display: block;
+        }
+
+        img {
+            max-width: 50%;
+            height: 50%;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 项目标题 -->
+    <div class="category">
+        <h1>安吉-红色文化</h1>
+    </div>
+
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <button onclick="showContent(1)">乌兰夫</button>
+        <button onclick="showContent(2)">吉雅泰</button>
+        <!-- <button onclick="showContent(3)">冬笋炖肉</button> -->
+        <!-- <button onclick="showContent(4)">松桃苗绣</button>
+        <button onclick="showContent(5)">大方漆器</button> -->
+
+    </div>
+
+    <!-- 页面内容 -->
+    <div id="content1" class="content">
+        <h2>乌兰夫：内蒙古民族解放与自治的奠基者</h2>
+        <p>乌兰夫（原名云泽）是内蒙古自治运动的主要领导人之一，也是新中国成立后第一任内蒙古自治区主席。他为民族团结和内蒙古自治事业作出了巨大贡献。在抗日战争时期，乌兰夫投身革命事业，创立了抗日民族统一战线，并参与创建大青山抗日游击根据地。乌兰夫用蒙汉双语宣传抗日思想，激励了草原上的民族团结，鼓舞了民众的抗日热情。
+        </p>
+        <p>抗战胜利后，乌兰夫带领内蒙古民族革命青年，响应中国共产党的号召，领导了内蒙古自治运动。他一生致力于民族团结与进步，被誉为“草原红色巨人”。乌兰夫的故事激励着无数人继续传承革命精神。</p>
+        <img src="assets/red_nm1.jpg" alt="乌兰夫">
+
+    </div>
+    <div id="content2" class="content">
+        <h2>吉雅泰：草原上的忠诚战士</h2>
+        <p>吉雅泰是早期内蒙古革命斗争中的一位蒙古族英雄人物。1925年，吉雅泰加入中国共产党，开始在内蒙古地区开展地下革命工作，组织蒙古族青年投身革命。在抗日战争时期，吉雅泰深入草原各地，秘密组织抗日游击队，不畏艰难险阻，冒着生命危险联络各方抗日力量。1936年，吉雅泰因叛徒出卖不幸被捕。在敌人的酷刑下，他坚贞不屈，始终守护党的秘密，最后英勇牺牲，年仅31岁。
+        </p>
+        <p>吉雅泰的忠诚与牺牲精神激励了草原人民，他用生命践行了革命理想，成为内蒙古红色历史上的不朽英雄。
+        </p>
+        <img src="assets/red_nm2.jpg" alt="干挑面">
+    </div>
+    <!-- <div id="content3" class="content">
+        <h2>冬笋炖肉</h2>
+        <p>🔴简介（关于冬笋）：冬笋是一种高蛋白、低淀粉食品，对肥胖症、冠心病、高血压、糖尿病和动脉硬化等患者有一定的食疗作用。它所含的多糖物质，还具有一定的抗癌作用。冬笋含有较多草酸钙，患尿道结石、肾炎的人不宜多食。
+        </p>
+        <p>🔴制作：
+            1. 冬笋剥去外皮,去掉硬根,切块
+            2. 五花肉切小块
+            3. 锅放油,烧热,放少量糖,熬糖色,把肉放里面煸炒
+            4. 加笋块炖到肉烂,即可出锅
+
+        </p>
+        <p>🔴典故：安吉孝丰镇有一款名菜——冬笋炖肉，这道菜还有一个故事。相传，古人孟宗是一个孝子，某日，老母得病，想吃一碗竹笋烧肉。不料，是年冬季特长，大雪封山，竹笋迟迟不肯萌动春芽。老母病卧在床，别无它求，只想吃一筷竹笋烧肉。孟宗无计可施，那天冰冻三尺，漫天飞雪，孟宗脱光了衣服，跪在竹林前，恳求上苍开恩，早点长出竹笋。一时惊动了天地，土地菩萨听闻孟宗孝子之心，甚为感动。次日，只见屋前竹林泥土松动，土层微突，孟宗挖开一看，泥层下面竟然长出黄澄澄的竹笋，一个个肥短可爱。剥开一看，嫩白松脆。孟宗大喜，马上拿回家，煮了一锅“冬笋炖肉”端上。老母吃了之后，胃口大开，连声夸奖味道好。说来也怪，没过几天孟母的病就痊愈了。这就是我国传统“二十四孝”中“孟宗哭竹求笋”的由来，“孝丰”之地名也由此而得。
+        </p>
+        <img src="assets/food_aj3.jpg" alt="冬笋炖肉">
+    </div> -->
+    <!-- <div id="content4" class="content">
+        <h2>松桃苗绣</h2>
+        <p>松桃苗绣指贵州省松桃县范围内生产的苗族刺绣，多以花鸟虫鱼、日月山川为题材，其构图夸张浪漫，图案介于具象与抽象之间，着色大胆自由，针法绣法多样，具有鲜明的风格。内容体现了苗族人民祖先崇拜、自然崇拜、图腾崇拜的思想。2015年7月，松桃苗绣注册国际级地理标志证明商标。
+        </p>
+        <img src="assets/gz_mx.jpg" alt="松桃苗绣">
+    </div>
+    <div id="content5" class="content">
+        <h2>大方漆器</h2>
+        <p>大方漆器，贵州省大方县特产，中国国家地理标志产品。
+            大方漆器已有600余年历史，其漆制品采用牛、羊等皮革和棉、麻、绸、木等做胎，用当地的优质生漆作原料，明洪武年间形成了一套以皮胎漆器为主的漆器制作工艺。大方漆器有较高的欣赏价值和实用价值，是贵州省优秀的民族民间艺术瑰宝。曾与贵州茅台酒、贵州玉屏箫笛合称为“贵州三宝”。2008年，“彝族漆器髹饰技艺”被列入国家级非物质文化遗产名录。
+            清《乾隆通志》记载：“黔之革器以大定（大方）为最佳”，大方皮胎漆器成为全国特色，并独创了“隐纹”装饰技法。大方漆器制作工艺独特，制作要求高，工艺流程繁杂，主要有制漆、胎胚、灰地、漆地、装饰五大工艺，50多道工序，82道生产环节，产品做工精细，品种齐全，造型生动，深受国内外消费者及收藏人士的青睐。
+            (唱词)、音乐(唱腔)和舞蹈(如“龙江浪三场”等)是最具有魅力、与众不同的精华部分。
+        </p>
+        <img src="assets/gz_qq.jpg" alt="大方漆器">
+    </div>
+    </div> -->
+
+    <script>
+        // 显示对应页面的内容
+        function showContent(pageNumber) {
+            // 隐藏所有页面
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // 显示选中的页面
+            const activeContent = document.getElementById('content' + pageNumber);
+            activeContent.classList.add('active');
+        }
+
+        // 默认显示第一个页面
+        showContent(1);
+    </script>
+
+</body>
+
+</html>
